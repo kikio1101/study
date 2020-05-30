@@ -1,12 +1,18 @@
 import React from 'react'
-// import Box from './components/box'
-import SignupPage from './pages/signup'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import { ErrorPage, TodoPage, HomePage, SignupPage } from './pages'
 
 function App() {
   return (
-    <div>
-      <SignupPage />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/todo" component={TodoPage} />
+        <Route path="/signup" component={SignupPage} />
+        <Route component={ErrorPage} />
+      </Switch>
+    </Router>
   )
 }
 

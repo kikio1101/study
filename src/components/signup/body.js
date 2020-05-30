@@ -1,13 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Form from './form'
 
-function Body() {
+function Body({ onAddUser }) {
   return (
     <div>
-      <Form />
+      <Form onAddUser={onAddUser} />
     </div>
   )
+}
+
+Body.propTypes = {
+  onAddUser: PropTypes.func,
 }
 
 export default Body

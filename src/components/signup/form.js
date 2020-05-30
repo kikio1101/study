@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import Container from '../shared/container'
 import Input from '../shared/input'
@@ -11,7 +12,7 @@ const INITIAL_VALUES = {
   passwordRe: '',
 }
 
-function Form() {
+function Form({ onAddUser }) {
   const [values, setValues] = useState(INITIAL_VALUES)
   const [errors, setErrors] = useState({
     isValid: false,
@@ -45,8 +46,9 @@ function Form() {
   }
 
   const handleSubmit = () => {
-    // TODO: 가입
+    const { name, password } = values
 
+    onAddUser({ name, password })
     setValues(INITIAL_VALUES)
   }
 
@@ -105,6 +107,10 @@ function Form() {
       </Button>
     </Container>
   )
+}
+
+Form.propTypes = {
+  onAddUser: PropTypes.func,
 }
 
 export default Form
